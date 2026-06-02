@@ -1,0 +1,8 @@
+{
+  "name": "Lesson 4 - He aha te taima?  Kei te pēhea te wā?",
+  "description": "An interactive Te Reo Māori learning game using hand tracking. Wave your hand over the correct answer items in each corner of the screen to answer!",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
