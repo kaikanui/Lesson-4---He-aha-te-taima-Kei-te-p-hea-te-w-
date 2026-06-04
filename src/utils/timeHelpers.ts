@@ -85,6 +85,20 @@ export function getRandomTime(): GameTime {
   return { hour, minute, isAm };
 }
 
+export function getRandomTimeForMode(mode: 'all' | 'hours' | 'quarters'): GameTime {
+  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  let minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+  if (mode === 'hours') {
+    minutes = [0];
+  } else if (mode === 'quarters') {
+    minutes = [0, 15, 30, 45];
+  }
+  const hour = hours[Math.floor(Math.random() * hours.length)];
+  const minute = minutes[Math.floor(Math.random() * minutes.length)];
+  const isAm = Math.random() > 0.5;
+  return { hour, minute, isAm };
+}
+
 // Generate incorrect options that are clearly distinct but reasonable (changing either hour, minute, or AM/PM)
 export function generateQuizOptions(correct: GameTime): GameTime[] {
   const optionsList: GameTime[] = [correct];
@@ -93,27 +107,72 @@ export function generateQuizOptions(correct: GameTime): GameTime[] {
   const minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
 
   while (optionsList.length < 4) {
-    let mode = Math.floor(Math.random() * 3); // 0 = change hour, 1 = change minute, 2 = change shift
+    let mode = Math.floor(Math.random() * 2); // 0 = change hour, 1 = change minute
     let fakeHour = correct.hour;
     let fakeMinute = correct.minute;
-    let fakeIsAm = correct.isAm;
+    // Keep AM/PM consistent with the correct answer to match the sky context of the question
+    let fakeIsAm = correct.isAm; 
 
     if (mode === 0) {
       const filtered = hours.filter(h => h !== correct.hour);
       fakeHour = filtered[Math.floor(Math.random() * filtered.length)];
-    } else if (mode === 1) {
+    } else {
       const filtered = minutes.filter(m => m !== correct.minute);
       fakeMinute = filtered[Math.floor(Math.random() * filtered.length)];
-    } else {
-      fakeIsAm = !correct.isAm;
     }
 
-    // Ensure uniqueness
-    const alreadyExists = optionsList.some(
-      opt => opt.hour === fakeHour && opt.minute === fakeMinute && opt.isAm === fakeIsAm
+    // Ensure absolute uniqueness of the hour & minute combination
+    const hourMinuteAlreadyExists = optionsList.some(
+      opt => opt.hour === fakeHour && opt.minute === fakeMinute
     );
 
-    if (!alreadyExists) {
+    if (!hourMinuteAlreadyExists) {
+      optionsList.push({ hour: fakeHour, minute: fakeMinute, isAm: fakeIsAm });
+    }
+  }
+
+  // Shuffle options
+  return optionsList.sort(() => 0.5 - Math.random());
+}
+
+export function generateQuizOptionsForMode(correct: GameTime, mode: 'all' | 'hours' | 'quarters'): GameTime[] {
+  const optionsList: GameTime[] = [correct];
+  
+  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  let minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+  if (mode === 'hours') {
+    minutes = [0];
+  } else if (mode === 'quarters') {
+    minutes = [0, 15, 30, 45];
+  }
+
+  while (optionsList.length < 4) {
+    let fakeHour = correct.hour;
+    let fakeMinute = correct.minute;
+    let fakeIsAm = correct.isAm; 
+
+    if (mode === 'hours') {
+      // In hours mode, the only variation is the hour since minute is always 0
+      const filtered = hours.filter(h => h !== correct.hour);
+      fakeHour = filtered[Math.floor(Math.random() * filtered.length)];
+    } else {
+      // For general or quarter modes
+      let changeMode = Math.floor(Math.random() * 2); // 0 = change hour, 1 = change minute
+      if (changeMode === 0) {
+        const filtered = hours.filter(h => h !== correct.hour);
+        fakeHour = filtered[Math.floor(Math.random() * filtered.length)];
+      } else {
+        const filtered = minutes.filter(m => m !== correct.minute);
+        fakeMinute = filtered[Math.floor(Math.random() * filtered.length)];
+      }
+    }
+
+    // Ensure absolute uniqueness of the hour & minute combination
+    const hourMinuteAlreadyExists = optionsList.some(
+      opt => opt.hour === fakeHour && opt.minute === fakeMinute
+    );
+
+    if (!hourMinuteAlreadyExists) {
       optionsList.push({ hour: fakeHour, minute: fakeMinute, isAm: fakeIsAm });
     }
   }

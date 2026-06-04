@@ -129,22 +129,22 @@ export default function App() {
 
   if (mode === 'shapes') {
     return (
-      <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 md:p-8" id="root-app-container">
-        <div className="max-w-6xl mx-auto space-y-6">
-          <header className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-art-green/10 pb-6">
+      <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 lg:p-6" id="root-app-container">
+        <div className="max-w-6xl mx-auto space-y-4 lg:space-y-5">
+          <header className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-art-green/10 pb-4">
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-art-green mb-1 flex items-center gap-2">
+              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-art-green mb-1 flex items-center gap-2">
                 He aha te taima?
               </h1>
-              <p className="text-xl font-medium opacity-70 italic">Kei te pēhea te wā? • Telling Time in Te Reo Māori</p>
+              <p className="text-lg font-semibold opacity-70 italic">Kei te pēhea te wā? • Telling Time in Te Reo Māori</p>
             </div>
             
-            <div className="flex flex-col items-end gap-3">
-              <div className="bg-art-orange text-white px-5 py-1.5 rounded-full font-bold text-sm shadow-md rotate-1 mb-1">
+            <div className="flex flex-col items-end gap-2">
+              <div className="bg-art-orange text-white px-5 py-1.5 rounded-full font-bold text-xs shadow-md rotate-1 mb-0.5">
                 Lesson 4 • Taimi & Schedule
               </div>
               
-              <div className="flex bg-white/70 p-1.5 rounded-2xl shadow-sm border border-art-green/20 backdrop-blur-sm">
+              <div className="flex bg-white/70 p-1.5 rounded-2xl shadow-sm border border-art-green/20 backdrop-blur-sm flex-wrap gap-1">
                 <button 
                   onClick={() => setMode('explore')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'explore' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
@@ -190,20 +190,20 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 md:p-8" id="root-app-container">
-      <div className="max-w-6xl mx-auto space-y-6">
+    <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 lg:p-6" id="root-app-container">
+      <div className="max-w-6xl mx-auto space-y-4 lg:space-y-5">
         
         {/* Header - Navigation */}
-        <header className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-art-green/10 pb-6" id="app-header">
+        <header className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-art-green/10 pb-4" id="app-header">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-art-green mb-1 flex items-center gap-2">
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-art-green mb-1 flex items-center gap-2">
               He aha te taima?
             </h1>
-            <p className="text-xl font-medium opacity-70 italic">Kei te pēhea te wā? • Telling Time in Te Reo Māori</p>
+            <p className="text-lg font-semibold opacity-70 italic">Kei te pēhea te wā? • Telling Time in Te Reo Māori</p>
           </div>
           
-          <div className="flex flex-col items-end gap-3">
-            <div className="bg-art-orange text-white px-5 py-1.5 rounded-full font-bold text-sm shadow-md rotate-1 mb-1">
+          <div className="flex flex-col items-end gap-2">
+            <div className="bg-art-orange text-white px-5 py-1.5 rounded-full font-bold text-xs shadow-md rotate-1 mb-0.5">
               Lesson 4 • Taimi & Schedule
             </div>
             
@@ -247,24 +247,24 @@ export default function App() {
           </div>
         </header>
 
-        <main className="grid grid-cols-12 gap-8" id="app-main-layout">
+        <main className="grid grid-cols-12 gap-5 lg:gap-6" id="app-main-layout">
           
           {/* LEFT PANEL: Explore Preset Tasks / Left Instructions */}
-          <section className="col-span-12 lg:col-span-4 space-y-6 order-2 lg:order-1">
+          <section className="col-span-12 lg:col-span-4 space-y-4 lg:space-y-5 order-2 lg:order-1">
             
             {mode === 'explore' ? (
-              <div className="bg-white/60 backdrop-blur-md p-6 rounded-[2rem] border border-art-green/15 shadow-sm space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-art-green/10">
-                  <Calendar className="text-art-orange" size={20} />
-                  <h3 className="font-display font-bold text-lg text-art-green uppercase tracking-wide">
+              <div className="bg-white/60 backdrop-blur-md p-5 rounded-[2rem] border border-art-green/15 shadow-sm space-y-3">
+                <div className="flex items-center gap-2 pb-1.5 border-b border-art-green/10">
+                  <Calendar className="text-art-orange" size={18} />
+                  <h3 className="font-display font-bold text-base text-art-green uppercase tracking-wide">
                     Tōku Wātaka (My Schedule)
                   </h3>
                 </div>
-                <p className="text-xs text-art-text/75 leading-relaxed">
-                  Select a typical school schedule activity below. Watch the analogue clock update its hands and sunrise/sunset dial, then study the written Te Reo Māori time structure below!
+                <p className="text-[11px] text-art-text/75 leading-relaxed">
+                  Select a school schedule activity below. Watch the analogue clock update its hands and sunrise/sunset dial, then study the Te Reo Māori time!
                 </p>
 
-                <div className="space-y-2 max-h-[420px] overflow-y-auto pr-2 custom-scrollbar">
+                <div className="space-y-1.5 max-h-[290px] overflow-y-auto pr-2 custom-scrollbar">
                   {DAILY_CHORES.map((chore, idx) => {
                     const isSelected = activePreset?.hour === chore.hour && 
                                        activePreset?.minute === chore.minute && 
@@ -306,61 +306,60 @@ export default function App() {
               </div>
             ) : (
               // Quiz Game Controls / Stats Panel
-              <div className="bg-white/60 backdrop-blur-md p-6 rounded-[2rem] border border-art-green/15 shadow-sm space-y-4 flex flex-col justify-between">
+              <div className="bg-white/60 backdrop-blur-md p-5 rounded-[2rem] border border-art-green/15 shadow-sm space-y-3 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-2 pb-2 border-b border-art-green/10 mb-3">
-                    <GraduationCap className="text-art-orange" size={20} />
-                    <h3 className="font-display font-bold text-lg text-art-green uppercase tracking-wide">
+                  <div className="flex items-center gap-2 pb-1.5 border-b border-art-green/10 mb-2">
+                    <GraduationCap className="text-art-orange" size={18} />
+                    <h3 className="font-display font-bold text-base text-art-green uppercase tracking-wide">
                       Kēmu Taimi (Time Game)
                     </h3>
                   </div>
-                  <p className="text-xs text-art-text/75 leading-relaxed">
-                    Look closely at the analogue clock in the center. Observe whether the sun is rising (AM) or setting (PM). 
-                    Then match it with the correct digital clock and Te Reo Māori translation!
+                  <p className="text-[11px] text-art-text/75 leading-relaxed">
+                    Look at the analogue clock. Observe whether the sun is rising (AM) or setting (PM). Then match the time!
                   </p>
                 </div>
 
-                <div className="bg-white/80 p-5 rounded-2xl border border-art-green/10 space-y-3">
-                  <div className="flex justify-between items-center text-sm font-bold text-art-green">
+                <div className="bg-white/80 p-4 rounded-2xl border border-art-green/10 space-y-2">
+                  <div className="flex justify-between items-center text-xs font-bold text-art-green">
                     <span>🎮 MODE:</span>
-                    <span className="bg-art-green/10 text-art-green px-3 py-0.5 rounded-xl text-xs uppercase">Multiple Choice</span>
+                    <span className="bg-art-green/10 text-art-green px-2 py-0.5 rounded-xl text-[10px] uppercase">Multiple Choice</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm font-bold text-art-green">
+                  <div className="flex justify-between items-center text-xs font-bold text-art-green">
                     <span>🏆 TOTAL SCORE:</span>
-                    <span className="bg-art-gold text-white px-3 py-0.5 rounded-xl text-xs font-black">{score}</span>
+                    <span className="bg-art-gold text-white px-2.5 py-0.5 rounded-xl text-[11px] font-black">{score}</span>
                   </div>
                 </div>
 
                 <button 
                   onClick={startNewQuiz}
-                  className="w-full bg-art-orange hover:bg-art-orange/90 text-white py-4.5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+                  className="w-full bg-art-orange hover:bg-art-orange/90 text-white py-3 rounded-xl font-black text-xs uppercase tracking-wider shadow-sm transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer animate-none"
                   id="reset-quiz-btn"
                 >
-                  <RotateCcw size={16} />
+                  <RotateCcw size={14} />
                   <span>Reset & Try New Time</span>
                 </button>
               </div>
             )}
 
             {/* Curriculum Help Card */}
-            <div className="bg-art-green p-6 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
+            <div className="bg-art-green p-5 rounded-[2rem] text-white shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-12 translate-x-12 pointer-events-none" />
-              <h4 className="font-display font-bold text-lg text-yellow-100 mb-3 flex items-center gap-1.5">
-                <Sparkles size={18} className="text-yellow-100" />
+              <h4 className="font-display font-bold text-base text-yellow-100 mb-2 flex items-center gap-1.5">
+                <Sparkles size={16} className="text-yellow-100" />
                 Language Tip:
               </h4>
-              <ul className="text-xs space-y-2.5 opacity-90 font-medium">
+              <ul className="text-[11px] space-y-2 opacity-95 font-medium">
                 <li>
-                  <strong className="text-yellow-100">Karaka</strong>: Modern Word for Clock or O'clock. (e.g., <span className="italic">Kotahi karaka</span> = 1:00)
+                  <strong className="text-yellow-100">Karaka</strong>: Modern word for O'clock. (<span className="italic">Kotahi karaka</span> = 1:00)
                 </li>
                 <li>
-                  <strong className="text-yellow-100">Miniti</strong>: Minutes. (e.g., <span className="italic">e rima miniti</span> = 5 minutes)
+                  <strong className="text-yellow-100">Miniti</strong>: Minutes. (<span className="italic">e rima miniti</span> = 5 min)
                 </li>
                 <li>
-                  <strong className="text-yellow-100">Mai te...</strong>: Used for minutes past the hour. (e.g., <span className="italic">E tekau miniti mai te rua karaka</span> = 10 minutes past 2:00)
+                  <strong className="text-yellow-100">Mai te...</strong>: Minutes past the hour. (<span className="italic">E tekau miniti mai te rua</span> = 10 past 2)
                 </li>
                 <li>
-                  <strong className="text-yellow-100">AM vs PM Skies</strong>: The analogue clock shows a golden sunrise sun (AM) or an evening moon with stars (PM). Watch it closely!
+                  <strong className="text-yellow-100">AM/PM Skies</strong>: Sunrise sun (AM) or stars & moon (PM).
                 </li>
               </ul>
             </div>
@@ -527,29 +526,29 @@ export default function App() {
               </div>
             ) : (
               // MULTIPLE CHOICE QUIZ GAMEPLAY
-              <div className="space-y-6" id="quiz-view">
+              <div className="space-y-4 lg:space-y-5" id="quiz-view">
                 
                 {quizTarget ? (
-                  <div className="space-y-6">
+                  <div className="space-y-4 lg:space-y-5">
                     
                     {/* Centered Area with Clock Question and layout */}
-                    <div className="bg-white p-6 sm:p-10 rounded-[3rem] border border-art-green/15 shadow-xl flex flex-col md:flex-row items-center gap-8 md:gap-12 relative">
+                    <div className="bg-white p-5 lg:p-6 rounded-[2.5rem] border border-art-green/15 shadow-xl flex flex-col md:flex-row items-center gap-6 lg:gap-8 relative">
                       
                       {/* Analogue Question Clock */}
                       <div className="shrink-0 mx-auto">
-                        <AnalogueClock time={quizTarget} size={250} />
+                        <AnalogueClock time={quizTarget} size={210} />
                       </div>
 
                       {/* Display Question details */}
-                      <div className="flex-1 w-full space-y-4">
+                      <div className="flex-1 w-full space-y-2.5">
                         <span className="bg-art-gold/10 text-art-gold-dark px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase inline-block">
                           🎯 Tāpaetanga • Challenge
                         </span>
-                        <h2 className="text-2xl sm:text-3.5xl font-black text-art-green tracking-tight leading-none">
+                        <h2 className="text-xl sm:text-2xl font-black text-art-green tracking-tight leading-none">
                           He aha te taima o tēnei karaka?
                         </h2>
-                        <p className="text-sm text-art-text/60 leading-relaxed">
-                          Look closely at the hour hand (shorter, darker) and minute hand (longer, thinner). Also look at the sky! If there is a bright rising sun, it translates to AM. If it is a purplish starry horizon, it's PM. 
+                        <p className="text-xs text-art-text/60 leading-relaxed">
+                          Observe the hour hand and minute hand, and the sunrise/sunset skies for AM/PM indicator:
                           <br />
                           <br />
                           <strong>Choose the correct matching Digital Time & Māori text below:</strong>
@@ -563,20 +562,20 @@ export default function App() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className={`absolute inset-0 rounded-[3rem] z-30 flex flex-col items-center justify-center text-center p-6 text-white ${
+                            className={`absolute inset-0 rounded-[2.5rem] z-30 flex flex-col items-center justify-center text-center p-4 text-white ${
                               quizFeedback === 'success' ? 'bg-art-green' : 'bg-art-orange'
-                            }`}
+                            } animate-none`}
                           >
                             {quizFeedback === 'success' ? (
                               <>
-                                <CheckCircle2 size={72} className="mb-2 animate-bounce" />
-                                <h3 className="text-3xl font-black">Ka Rawe! Excellent Work!</h3>
-                                <p className="text-sm max-w-md mt-2 opacity-90 italic">
-                                  You correctly translated the analogue clock to "{getMaoriTime(quizTarget.hour, quizTarget.minute)}"!
+                                <CheckCircle2 size={54} className="mb-2 animate-bounce" />
+                                <h3 className="text-2xl font-black">Ka Rawe! Excellent Work!</h3>
+                                <p className="text-xs max-w-sm mt-1.5 opacity-90 italic">
+                                  You translated the analogue clock to "{getMaoriTime(quizTarget.hour, quizTarget.minute)}"!
                                 </p>
                                 <button 
                                   onClick={startNewQuiz}
-                                  className="mt-6 bg-white hover:bg-slate-50 text-art-green px-8 py-3 rounded-full font-black text-sm uppercase tracking-widest shadow-lg transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+                                  className="mt-4 bg-white hover:bg-slate-50 text-art-green px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider shadow transition-transform hover:scale-105 active:scale-95 cursor-pointer"
                                   id="next-quiz-btn"
                                 >
                                   Next Time Challenge
@@ -584,14 +583,14 @@ export default function App() {
                               </>
                             ) : (
                               <>
-                                <XCircle size={72} className="mb-2 animate-shake" />
-                                <h3 className="text-3xl font-black">Kia Mau! Almost there!</h3>
-                                <p className="text-sm max-w-md mt-2 opacity-90">
-                                  That's incorrect. Remember to watch the hand indicators and check if it has a sunrise (AM) or sunset (PM) sky!
+                                <XCircle size={54} className="mb-2 animate-shake" />
+                                <h3 className="text-2xl font-black">Kia Mau! Almost there!</h3>
+                                <p className="text-xs max-w-sm mt-1.5 opacity-90">
+                                  Incorrect. Check if it's sunrise (AM) or sunset (PM) sky, then re-check the clock hand values.
                                 </p>
                                 <button 
                                   onClick={() => setQuizFeedback(null)}
-                                  className="mt-6 bg-white hover:bg-slate-50 text-art-orange px-8 py-3 rounded-full font-black text-sm uppercase tracking-widest shadow-lg transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+                                  className="mt-4 bg-white hover:bg-slate-50 text-art-orange px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider shadow transition-transform hover:scale-105 active:scale-95 cursor-pointer"
                                   id="try-again-quiz-btn"
                                 >
                                   Try This Again
@@ -605,7 +604,7 @@ export default function App() {
                     </div>
 
                     {/* Simple Grid Options */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                       {quizOptions.map((opt, idx) => {
                         const isSelected = selectedQuizIdx === idx;
                         const formatted = formatDigitalTime(opt);
@@ -617,7 +616,7 @@ export default function App() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => handleSelectQuizOption(idx)}
-                            className={`p-5 rounded-2xl border-4 text-left transition-all flex flex-col justify-center relative overflow-hidden cursor-pointer ${
+                            className={`p-4 rounded-xl border-4 text-left transition-all flex flex-col justify-center relative overflow-hidden cursor-pointer ${
                               isSelected
                                 ? quizFeedback === 'success'
                                   ? 'bg-art-green border-art-green text-white'

@@ -238,7 +238,7 @@ export default function CameraGame({ onExit }: CameraGameProps) {
                 <div className="text-[10px] font-black text-art-orange tracking-widest uppercase mb-2">
                   He aha tēnei taimā?
                 </div>
-                <AnalogueClock time={targetTime} size={window.innerHeight < 650 ? 150 : 210} />
+                <AnalogueClock time={targetTime} size={window.innerHeight < 800 ? 180 : 210} />
               </motion.div>
             )}
           </div>
@@ -275,7 +275,7 @@ export default function CameraGame({ onExit }: CameraGameProps) {
                     if (gameState === 'playing') checkAnswer(idx);
                   }}
                   className={`
-                    w-[38vw] h-[34vw] sm:w-[32vw] sm:h-[28vw] md:w-72 md:h-52
+                    w-[38vw] h-[32vw] sm:w-[30vw] sm:h-[26vw] md:w-64 md:h-40 xl:w-72 xl:h-48
                     bg-white/90 backdrop-blur-md rounded-3xl shadow-lg border-4
                     flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300
                     pointer-events-auto cursor-pointer outline-none focus:ring-4 focus:ring-art-orange/40
