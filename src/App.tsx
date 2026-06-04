@@ -25,8 +25,9 @@ import {
 } from './utils/timeHelpers';
 import AnalogueClock from './components/AnalogueClock';
 import CameraGame from './components/CameraGame';
+import ShapesGame from './components/ShapesGame';
 
-type GameMode = 'explore' | 'quiz' | 'camera';
+type GameMode = 'explore' | 'quiz' | 'camera' | 'shapes';
 
 export default function App() {
   const [mode, setMode] = useState<GameMode>('camera');
@@ -126,6 +127,68 @@ export default function App() {
     return <CameraGame onExit={() => setMode('explore')} />;
   }
 
+  if (mode === 'shapes') {
+    return (
+      <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 md:p-8" id="root-app-container">
+        <div className="max-w-6xl mx-auto space-y-6">
+          <header className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-art-green/10 pb-6">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-art-green mb-1 flex items-center gap-2">
+                He aha te taima?
+              </h1>
+              <p className="text-xl font-medium opacity-70 italic">Kei te pēhea te wā? • Telling Time in Te Reo Māori</p>
+            </div>
+            
+            <div className="flex flex-col items-end gap-3">
+              <div className="bg-art-orange text-white px-5 py-1.5 rounded-full font-bold text-sm shadow-md rotate-1 mb-1">
+                Lesson 4 • Taimi & Schedule
+              </div>
+              
+              <div className="flex bg-white/70 p-1.5 rounded-2xl shadow-sm border border-art-green/20 backdrop-blur-sm">
+                <button 
+                  onClick={() => setMode('explore')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'explore' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                  id="btn-explore-shapes"
+                >
+                  <BookOpen size={14} />
+                  <span>Tūhura (Explore)</span>
+                </button>
+                
+                <button 
+                  onClick={startNewQuiz}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'quiz' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                  id="btn-quiz-shapes"
+                >
+                  <Gamepad2 size={14} />
+                  <span>Kēmu (Game)</span>
+                </button>
+
+                <button 
+                  onClick={() => setMode('shapes')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'shapes' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                  id="btn-shapes-nav"
+                >
+                  <Sparkles size={14} />
+                  <span>Kēmu Shapes</span>
+                </button>
+                
+                <button 
+                  onClick={() => setMode('camera')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'camera' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                  id="btn-camera-shapes"
+                >
+                  <Camera size={14} />
+                  <span>Ringaringa</span>
+                </button>
+              </div>
+            </div>
+          </header>
+          <ShapesGame onExit={() => setMode('explore')} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-art-bg text-art-text font-sans p-4 md:p-8" id="root-app-container">
       <div className="max-w-6xl mx-auto space-y-6">
@@ -144,32 +207,41 @@ export default function App() {
               Lesson 4 • Taimi & Schedule
             </div>
             
-            <div className="flex bg-white/70 p-1.5 rounded-2xl shadow-sm border border-art-green/20 backdrop-blur-sm">
+            <div className="flex bg-white/70 p-1.5 rounded-2xl shadow-sm border border-art-green/20 backdrop-blur-sm flex-wrap gap-1">
               <button 
                 onClick={() => setMode('explore')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all font-bold text-sm cursor-pointer ${mode === 'explore' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'explore' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
                 id="btn-explore"
               >
-                <BookOpen size={16} />
+                <BookOpen size={14} />
                 <span>Tūhura (Explore)</span>
               </button>
               
               <button 
                 onClick={startNewQuiz}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all font-bold text-sm cursor-pointer ${mode === 'quiz' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'quiz' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
                 id="btn-quiz"
               >
-                <Gamepad2 size={16} />
+                <Gamepad2 size={14} />
                 <span>Kēmu (Game)</span>
+              </button>
+
+              <button 
+                onClick={() => setMode('shapes')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'shapes' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                id="btn-shapes-tab"
+              >
+                <Sparkles size={14} />
+                <span>Kēmu Shapes</span>
               </button>
               
               <button 
                 onClick={() => setMode('camera')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all font-bold text-sm cursor-pointer ${mode === 'camera' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all font-bold text-xs cursor-pointer ${mode === 'camera' ? 'bg-art-green text-white shadow-md' : 'text-art-green hover:bg-art-green/10'}`}
                 id="btn-camera"
               >
-                <Camera size={16} />
-                <span>Ringaringa (Camera Mode)</span>
+                <Camera size={14} />
+                <span>Ringaringa (Camera)</span>
               </button>
             </div>
           </div>

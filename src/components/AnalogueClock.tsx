@@ -195,14 +195,7 @@ export default function AnalogueClock({ time, size = 260, showAmPmGraphic = true
         />
       </svg>
 
-      {/* Small interactive info tags or glows */}
-      <div className={`absolute bottom-3 text-[10px] font-mono select-none tracking-widest px-2.5 py-0.5 rounded-md ${
-        isAm 
-          ? 'bg-slate-100 text-slate-500/80' 
-          : 'bg-indigo-950/60 text-orange-200/80 border border-orange-500/10'
-      }`}>
-        ANALOGUE
-      </div>
+
 
     </div>
   );
